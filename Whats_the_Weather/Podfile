@@ -1,0 +1,5 @@
+workspace 'Whats_the_Weather'
+
+target 'Whats_the_Weather' do
+       pod 'Moya', '~> 13.0'
+end
