@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--SearchVC-->
+        <scene sceneID="gVs-Um-l7k">
+            <objects>
+                <viewController storyboardIdentifier="SearchVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ws6-Hv-dtx" customClass="SearchVC" customModule="WhatsTheWeather" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XdL-j3-wV5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search for a city" translatesAutoresizingMaskIntoConstraints="NO" id="4VT-2R-xXD">
+                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQ5-BI-qhc">
+                                <rect key="frame" x="190.5" y="434.5" width="33" height="27"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F8h-vn-A4l" customClass="MainButton" customModule="WhatsTheWeather" customModuleProvider="target">
+                                <rect key="frame" x="150" y="547" width="114" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="4VT-2R-xXD" firstAttribute="trailing" secondItem="q6o-da-R4E" secondAttribute="trailing" id="S4u-kY-eVi"/>
+                            <constraint firstItem="4VT-2R-xXD" firstAttribute="leading" secondItem="q6o-da-R4E" secondAttribute="leading" id="YSy-gG-uAX"/>
+                            <constraint firstItem="eQ5-BI-qhc" firstAttribute="centerY" secondItem="XdL-j3-wV5" secondAttribute="centerY" id="cTi-RC-LuM"/>
+                            <constraint firstItem="eQ5-BI-qhc" firstAttribute="centerX" secondItem="XdL-j3-wV5" secondAttribute="centerX" id="kUj-sn-CLc"/>
+                            <constraint firstItem="4VT-2R-xXD" firstAttribute="top" secondItem="q6o-da-R4E" secondAttribute="top" id="qjv-oT-BRp"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="q6o-da-R4E"/>
+                    </view>
+                    <connections>
+                        <outlet property="searchBar" destination="4VT-2R-xXD" id="KIx-g5-BsM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TNy-iz-6Dh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="102.89855072463769" y="-68.303571428571431"/>
+        </scene>
+    </scenes>
+</document>
