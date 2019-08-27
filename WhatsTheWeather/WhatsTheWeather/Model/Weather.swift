@@ -7,18 +7,18 @@ import Foundation
 
 // MARK: - Weather
 struct Weather: Codable {
-    let coord: Coord
-    let weather: [WeatherElement]
-    let base: String
-    let main: Main
-    let visibility: Int
-    let wind: Wind
-    let clouds: Clouds
-    let dt: Int
-    let sys: Sys
-    let timezone, id: Int
-    let name: String
-    let cod: Int
+    let coord: Coord?
+    let weather: [WeatherElement]?
+    let base: String?
+    let main: Main?
+    let visibility: Int?
+    let wind: Wind?
+    let clouds: Clouds?
+    let dt: Int?
+    let sys: Sys?
+    let timezone, id: Int?
+    let name: String?
+    let cod: Int?
 }
 
 // MARK: - Clouds
