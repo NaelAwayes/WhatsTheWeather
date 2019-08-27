@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FontAwesome_swift
 
 class SearchVC: UIViewController {
 
@@ -17,12 +18,20 @@ class SearchVC: UIViewController {
         }
     }
     @IBOutlet private weak var searchBar: UISearchBar!
+    @IBOutlet private weak var locationButton: MainButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
-        self.navigationItem.title = "Search"
-        self.navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.title = "Search"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        if let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField {
+            textFieldInsideSearchBar.textColor = UIColor.white
+        }
+        let attributedTitle = NSMutableAttributedString(string: "Fetch weather using geolocation   ", attributes: nil)
+        let attributedIcon = NSMutableAttributedString(string: String.fontAwesomeIcon(name: .locationArrow), attributes: [NSAttributedString.Key.font: UIFont.fontAwesome(ofSize: 15.0, style: .solid)])
+        attributedTitle.append(attributedIcon)
+        locationButton.setAttributedTitle(attributedTitle, for: .normal);
     }
 
 }

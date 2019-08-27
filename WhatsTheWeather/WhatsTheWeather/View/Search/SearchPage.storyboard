@@ -18,33 +18,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search for a city" translatesAutoresizingMaskIntoConstraints="NO" id="4VT-2R-xXD">
-                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" text="" placeholder="Search for a city" translatesAutoresizingMaskIntoConstraints="NO" id="4VT-2R-xXD">
+                                <rect key="frame" x="16" y="244" width="382" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQ5-BI-qhc">
-                                <rect key="frame" x="190.5" y="434.5" width="33" height="27"/>
+                                <rect key="frame" x="191" y="320" width="32.5" height="26.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="22"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F8h-vn-A4l" customClass="MainButton" customModule="WhatsTheWeather" customModuleProvider="target">
-                                <rect key="frame" x="150" y="547" width="114" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wHf-Mk-AUF" customClass="MainButton" customModule="WhatsTheWeather" customModuleProvider="target">
+                                <rect key="frame" x="57" y="366.5" width="300" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="8nt-9t-arI"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="4VT-2R-xXD" firstAttribute="trailing" secondItem="q6o-da-R4E" secondAttribute="trailing" id="S4u-kY-eVi"/>
-                            <constraint firstItem="4VT-2R-xXD" firstAttribute="leading" secondItem="q6o-da-R4E" secondAttribute="leading" id="YSy-gG-uAX"/>
-                            <constraint firstItem="eQ5-BI-qhc" firstAttribute="centerY" secondItem="XdL-j3-wV5" secondAttribute="centerY" id="cTi-RC-LuM"/>
-                            <constraint firstItem="eQ5-BI-qhc" firstAttribute="centerX" secondItem="XdL-j3-wV5" secondAttribute="centerX" id="kUj-sn-CLc"/>
-                            <constraint firstItem="4VT-2R-xXD" firstAttribute="top" secondItem="q6o-da-R4E" secondAttribute="top" id="qjv-oT-BRp"/>
+                            <constraint firstItem="wHf-Mk-AUF" firstAttribute="leading" secondItem="q6o-da-R4E" secondAttribute="leading" constant="57" id="9b1-hv-qvB"/>
+                            <constraint firstItem="4VT-2R-xXD" firstAttribute="top" secondItem="q6o-da-R4E" secondAttribute="top" constant="200" id="ILe-jV-N7H"/>
+                            <constraint firstItem="q6o-da-R4E" firstAttribute="trailing" secondItem="wHf-Mk-AUF" secondAttribute="trailing" constant="57" id="VaG-FH-Yee"/>
+                            <constraint firstItem="wHf-Mk-AUF" firstAttribute="top" secondItem="eQ5-BI-qhc" secondAttribute="bottom" constant="20" id="cOP-WY-nVw"/>
+                            <constraint firstItem="eQ5-BI-qhc" firstAttribute="top" secondItem="4VT-2R-xXD" secondAttribute="bottom" constant="20" id="dJc-Kg-j2O"/>
+                            <constraint firstItem="4VT-2R-xXD" firstAttribute="leading" secondItem="q6o-da-R4E" secondAttribute="leading" constant="16" id="ldn-14-c4b"/>
+                            <constraint firstItem="eQ5-BI-qhc" firstAttribute="centerX" secondItem="XdL-j3-wV5" secondAttribute="centerX" id="mrj-nq-cCW"/>
+                            <constraint firstItem="q6o-da-R4E" firstAttribute="trailing" secondItem="4VT-2R-xXD" secondAttribute="trailing" constant="16" id="pea-dR-57m"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="q6o-da-R4E"/>
                     </view>
                     <connections>
+                        <outlet property="locationButton" destination="wHf-Mk-AUF" id="MTe-mO-kNl"/>
                         <outlet property="searchBar" destination="4VT-2R-xXD" id="KIx-g5-BsM"/>
                     </connections>
                 </viewController>
