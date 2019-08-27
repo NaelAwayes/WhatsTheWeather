@@ -7,82 +7,53 @@
 //
 
 import UIKit
+import FontAwesome_swift
+import TinyConstraints
 
 @IBDesignable
-class MainButton: UIButton {
-    @IBOutlet private weak var contentView: UIView!
-    @IBOutlet private weak var textLabel: UILabel!
-    @IBOutlet private weak var iconLabel: UILabel!
-
-    public var text: String = "" {
-        didSet {
-            textLabel.text = self.text
-        }
+final class MainButton: UIButton {
+    private enum Constants {
+        static let height: CGFloat = 50.0
     }
 
-    public var icon: String = "" {
-        didSet {
-            iconLabel.text = self.icon
-        }
+    public convenience init() {
+        self.init(frame: .zero)
     }
 
-    let gradientLayer = CAGradientLayer()
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.customInit()
-    }
-
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.customInit()
+        commonSetup()
     }
 
-    private func customInit() {
-        Bundle.main.loadNibNamed("MainButton", owner: self, options: nil)
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        commonSetup()
+    }
 
-        self.addSubview(self.contentView)
-        self.drawBackgroundGradient(colors: [UIColor(hex: "#800080"), UIColor(hex: "#ffc0cb")])
-        self.contentView.frame = self.bounds
-        self.contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+    public override func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
+        commonSetup()
+    }
+
+    override public func layoutSubviews() {
+        super.layoutSubviews()
+        commonSetup()
     }
 }
 
 private extension MainButton {
-    func drawBackgroundGradient(colors: [UIColor?]) {
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = self.bounds
-        gradientLayer.colors = colors
-        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.0)
-        gradientLayer.endPoint = CGPoint(x: 0.5, y: 0.0)
-        self.layer.insertSublayer(gradientLayer, at: 0)
+
+    func commonSetup() {
+        height(Constants.height)
+//        let gradientColor1 = UIColor(red: 128, green: 0, blue: 128, alpha: 255)
+//        let gradientColor2 = UIColor(red: 255, green: 192, blue: 203, alpha: 255)
+        let gradientColor1 = UIColor(red:1.00, green:0.60, blue:0.40, alpha:1.0)
+        let gradientColor2 = UIColor(red:1.00, green:0.37, blue:0.38, alpha:1.0)
+        setGradientBackground(firstColor: gradientColor1, secondColor: gradientColor2)
+        layer.cornerRadius = 10
+        clipsToBounds = true
+        titleLabel?.textColor = UIColor.white
+
     }
 }
 
-extension UIColor {
-    public convenience init?(hex: String) {
-        let r, g, b, a: CGFloat
-
-        if hex.hasPrefix("#") {
-            let start = hex.index(hex.startIndex, offsetBy: 1)
-            let hexColor = String(hex[start...])
-
-            if hexColor.count == 8 {
-                let scanner = Scanner(string: hexColor)
-                var hexNumber: UInt64 = 0
-
-                if scanner.scanHexInt64(&hexNumber) {
-                    r = CGFloat((hexNumber & 0xff000000) >> 24) / 255
-                    g = CGFloat((hexNumber & 0x00ff0000) >> 16) / 255
-                    b = CGFloat((hexNumber & 0x0000ff00) >> 8) / 255
-                    a = CGFloat(hexNumber & 0x000000ff) / 255
-
-                    self.init(red: r, green: g, blue: b, alpha: a)
-                    return
-                }
-            }
-        }
-
-        return nil
-    }
-}
