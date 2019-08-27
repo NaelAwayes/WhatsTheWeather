@@ -7,5 +7,6 @@ target 'WhatsTheWeather' do
 
   # Pods for WhatsTheWeather
   pod 'Moya', '~> 13.0'
+  pod 'FontAwesome.swift'
 
 end
