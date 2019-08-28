@@ -28,6 +28,8 @@
 		3C54ADC6231582A800D8984E /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C54ADC5231582A800D8984E /* Location.swift */; };
 		3C54ADCA2316780700D8984E /* WeatherVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C54ADC92316780700D8984E /* WeatherVC.swift */; };
 		3C54ADCC231685F700D8984E /* TemperatureButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C54ADCB231685F700D8984E /* TemperatureButton.swift */; };
+		3C54ADCF2316B1D800D8984E /* FavoritesPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C54ADCE2316B1D800D8984E /* FavoritesPage.storyboard */; };
+		3C54ADD12316B33100D8984E /* FavoritesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C54ADD02316B33100D8984E /* FavoritesVC.swift */; };
 		896A23C488F5148532F25C42 /* Pods_WhatsTheWeather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BE40445580659FE5AF443AF /* Pods_WhatsTheWeather.framework */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +57,8 @@
 		3C54ADC5231582A800D8984E /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		3C54ADC92316780700D8984E /* WeatherVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherVC.swift; sourceTree = "<group>"; };
 		3C54ADCB231685F700D8984E /* TemperatureButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureButton.swift; sourceTree = "<group>"; };
+		3C54ADCE2316B1D800D8984E /* FavoritesPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FavoritesPage.storyboard; sourceTree = "<group>"; };
+		3C54ADD02316B33100D8984E /* FavoritesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesVC.swift; sourceTree = "<group>"; };
 		4BE40445580659FE5AF443AF /* Pods_WhatsTheWeather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhatsTheWeather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E4535DBAF2B93987F9BB77F /* Pods-WhatsTheWeather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatsTheWeather.debug.xcconfig"; path = "Target Support Files/Pods-WhatsTheWeather/Pods-WhatsTheWeather.debug.xcconfig"; sourceTree = "<group>"; };
 		B06BD4CC8B78CE9F6F16A3B4 /* Pods-WhatsTheWeather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatsTheWeather.release.xcconfig"; path = "Target Support Files/Pods-WhatsTheWeather/Pods-WhatsTheWeather.release.xcconfig"; sourceTree = "<group>"; };
@@ -134,6 +138,7 @@
 			children = (
 				3C54ADA92313E12900D8984E /* SearchVC.swift */,
 				3C54ADC92316780700D8984E /* WeatherVC.swift */,
+				3C54ADD02316B33100D8984E /* FavoritesVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -177,10 +182,19 @@
 		3C54ADC82316774A00D8984E /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				3C54ADCD2316B1C200D8984E /* FavoritesPage */,
 				3C54ADB323142E2C00D8984E /* WeatherPage */,
 				3C54AD9B2313D1C500D8984E /* SearchPage */,
 			);
 			path = Pages;
+			sourceTree = "<group>";
+		};
+		3C54ADCD2316B1C200D8984E /* FavoritesPage */ = {
+			isa = PBXGroup;
+			children = (
+				3C54ADCE2316B1D800D8984E /* FavoritesPage.storyboard */,
+			);
+			path = FavoritesPage;
 			sourceTree = "<group>";
 		};
 		A3530735CC8352ECC5DF76C0 /* Pods */ = {
@@ -262,6 +276,7 @@
 			files = (
 				3C54AD8F2313C9A900D8984E /* LaunchScreen.storyboard in Resources */,
 				3C54AD9D2313D1D200D8984E /* SearchPage.storyboard in Resources */,
+				3C54ADCF2316B1D800D8984E /* FavoritesPage.storyboard in Resources */,
 				3C54ADB523142E5500D8984E /* WeatherPage.storyboard in Resources */,
 				3C54AD8C2313C9A900D8984E /* Assets.xcassets in Resources */,
 			);
@@ -330,6 +345,7 @@
 				3C54AD852313C9A800D8984E /* AppDelegate.swift in Sources */,
 				3C54ADA82313DE1700D8984E /* OWMWeatherUnits.swift in Sources */,
 				3C54ADAE231401C700D8984E /* AppStoryboard.swift in Sources */,
+				3C54ADD12316B33100D8984E /* FavoritesVC.swift in Sources */,
 				3C54ADC42315690400D8984E /* UserLocationService.swift in Sources */,
 				3C54ADA42313DC8D00D8984E /* OWMAppId.swift in Sources */,
 				3C54ADAC2313E59F00D8984E /* Weather.swift in Sources */,

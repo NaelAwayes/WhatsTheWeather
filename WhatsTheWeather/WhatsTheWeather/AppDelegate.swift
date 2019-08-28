@@ -16,9 +16,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        let initialVC = SearchVC.instantiate(fromAppStoryboard: .SearchPage)
-        let nc = WTWNavController(rootViewController: initialVC)
-        self.window?.rootViewController = nc
+
+        let tabController = WTWTabController()
+
+        let searchVC = SearchVC.instantiate(fromAppStoryboard: .SearchPage)
+        searchVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
+        let favoritesVC = FavoritesVC.instantiate(fromAppStoryboard: .FavoritesPage)
+        favoritesVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
+
+        let controllers = [searchVC, favoritesVC]
+
+        tabController.viewControllers = controllers.map{
+            WTWNavController(rootViewController: $0)
+        }
+
+        self.window?.rootViewController = tabController
         self.window?.makeKeyAndVisible()
         
         return true

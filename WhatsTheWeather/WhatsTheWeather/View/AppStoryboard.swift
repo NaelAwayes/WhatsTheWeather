@@ -11,6 +11,7 @@ import UIKit
 enum AppStoryboard: String {
     case SearchPage
     case WeatherPage
+    case FavoritesPage
 
     var instance: UIStoryboard {
         return UIStoryboard(name: self.rawValue, bundle: Bundle.main)

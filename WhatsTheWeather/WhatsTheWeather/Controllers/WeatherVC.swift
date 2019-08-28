@@ -21,11 +21,23 @@ final class WeatherVC: UIViewController {
 
     @IBOutlet private weak var pressureLabel: UILabel!
     @IBOutlet private weak var humidityLabel: UILabel!
-    
+
+    var favoriteStatus: Bool = false {
+        didSet {
+            if favoriteStatus {
+                self.navigationItem.rightBarButtonItem = createRemoveCityBarButton()
+            } else {
+                self.navigationItem.rightBarButtonItem = createAddCityBarButton()
+            }
+            print(UserDefaults.standard.stringArray(forKey: "savedCityArray"))
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.tintColor = UIColor.white
         navigationItem.title = "Weather"
+        favoriteStatus = checkIfCityInSavedList()
         setupWeatherInfo()
     }
 }
@@ -40,5 +52,69 @@ private extension WeatherVC {
         if let cityName = currentWeather?.name, let countryName = currentWeather?.sys?.country {
             navigationItem.title = "\(cityName), \(countryName)"
         }
+    }
+
+    @objc func addCityToFavorites() {
+        guard let cityName = currentWeather?.name else {
+            let alert = UIAlertController(title: "An Error Occurred", message: "Please get in touch with support so can we make sure this does not happen again", preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        if var cityArray = UserDefaults.standard.stringArray(forKey: "savedCityArray") {
+            if (cityArray.contains(cityName)) {
+                let alert = UIAlertController(title: "City already in Favorites", message: "The current city already exists in your list of saved cities", preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(action)
+                self.present(alert, animated: true, completion: nil)
+                return
+            }
+            cityArray.append(cityName)
+            UserDefaults.standard.set(cityArray, forKey: "savedCityArray")
+            favoriteStatus = true
+        } else {
+            let cityArray = [cityName]
+            UserDefaults.standard.set(cityArray, forKey: "savedCityArray")
+            favoriteStatus = true
+        }
+    }
+
+    @objc func removeCityFromFavorites() {
+        guard let cityName = currentWeather?.name else {
+            let alert = UIAlertController(title: "An Error Occurred", message: "Please get in touch with support so can we make sure this does not happen again", preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        if var cityArray = UserDefaults.standard.stringArray(forKey: "savedCityArray") {
+            if (cityArray.contains(cityName)) {
+                cityArray.removeAll { (value) -> Bool in
+                    value == cityName
+                }
+                UserDefaults.standard.set(cityArray, forKey: "savedCityArray")
+                favoriteStatus = false
+                return
+            }
+        }
+        let alert = UIAlertController(title: "City not in Favorites", message: "The current city does not exist in your list of saved cities", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
+        return
+    }
+
+    func checkIfCityInSavedList() -> Bool {
+        guard let cityName = currentWeather?.name, let cityArray = UserDefaults.standard.stringArray(forKey: "savedCityArray") else { return false }
+        if cityArray.contains(cityName) { return true } else { return false }
+    }
+
+    func createAddCityBarButton() -> UIBarButtonItem {
+        return UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addCityToFavorites))
+    }
+
+    func createRemoveCityBarButton() -> UIBarButtonItem {
+        return UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(removeCityFromFavorites))
     }
 }
