@@ -34,7 +34,7 @@ struct Coord: Codable {
 // MARK: - Main
 struct Main: Codable {
     let temp: Double
-    let pressure, humidity: Int
+    let pressure, humidity: Double
     let tempMin, tempMax: Double
 
     enum CodingKeys: String, CodingKey {
@@ -67,7 +67,7 @@ struct WeatherElement: Codable {
 // MARK: - Wind
 struct Wind: Codable {
     let speed: Double
-    let deg: Int?
+    let deg: Double?
 }
 
 enum WeatherFetchError: Error {

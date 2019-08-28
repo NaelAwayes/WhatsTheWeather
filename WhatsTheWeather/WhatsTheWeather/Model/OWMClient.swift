@@ -23,6 +23,9 @@ class OWMClient: Networkable {
                         completion(nil, WeatherFetchError.notFoundError(nil))
                     }
                     if response.statusCode == 400 {
+                        dump(location)
+                        let str = String(data: response.data, encoding: String.Encoding.utf8) as String?
+                        print("RESPONSE ERROR: \(str))")
                         completion(nil, WeatherFetchError.parsingError(nil))
                     }
                     let decoder = JSONDecoder()

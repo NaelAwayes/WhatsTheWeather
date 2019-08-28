@@ -14,13 +14,13 @@ class SearchVC: UIViewController {
 
 
     let locationManager = CLLocationManager() //TODO: Dependency injection would be better
-    var userLocation: CLLocationCoordinate2D? {
+    var userLocation: Location? {
         didSet {
-            client.getWeather(location: Location(longitude: "\(self.userLocation?.longitude)", latitude: "\(self.userLocation?.latitude)"), units: .metric) { (weather, error) in
+            client.getWeather(location: self.userLocation!, units: .metric) { (weather, error) in
                 if let error = error {
                     print("Location error fetch \(error)")
                 }
-                dump(weather)
+                self.navigateToWeatherScreen(weather: weather)
             }
             locationManager.stopUpdatingLocation()
         }
@@ -69,7 +69,8 @@ extension SearchVC: CLLocationManagerDelegate {
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let currentLocation = locations.last {
-            userLocation = currentLocation.coordinate
+            userLocation = Location(longitude: String(format: "%f", currentLocation.coordinate.longitude), latitude: String(format: "%f", currentLocation.coordinate.latitude))
+            locationManager.stopUpdatingLocation()
         }
     }
 
@@ -132,7 +133,15 @@ extension SearchVC: UISearchBarDelegate {
                 alert.addAction(.init(title: "OK", style: .cancel, handler: nil))
                 self.present(alert, animated: true)
             }
-            dump(weather)
+            self.navigateToWeatherScreen(weather: weather)
         }
+    }
+}
+
+private extension SearchVC {
+    func navigateToWeatherScreen(weather: Weather?) {
+        let weatherVC = WeatherVC.instantiate(fromAppStoryboard: .WeatherPage)
+        weatherVC.currentWeather = weather
+        self.show(weatherVC, sender: nil)
     }
 }

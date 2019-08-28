@@ -40,6 +40,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="wHf-Mk-AUF" firstAttribute="leading" secondItem="q6o-da-R4E" secondAttribute="leading" constant="57" id="9b1-hv-qvB"/>
                             <constraint firstItem="4VT-2R-xXD" firstAttribute="top" secondItem="q6o-da-R4E" secondAttribute="top" constant="200" id="ILe-jV-N7H"/>
