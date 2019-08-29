@@ -7,7 +7,7 @@ extension UIView {
         gradientLayer.locations = [0, 1]
         gradientLayer.startPoint = CGPoint(x: 0.0, y: 0)
         gradientLayer.endPoint = CGPoint(x: 1.0, y: 0)
-        gradientLayer.frame = bounds
+        gradientLayer.frame = CGRect(x: bounds.minX, y: bounds.minY, width: bounds.width, height: bounds.height + 5)
 
         layer.insertSublayer(gradientLayer, at: 0)
     }

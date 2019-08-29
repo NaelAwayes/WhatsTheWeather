@@ -30,6 +30,10 @@
 		3C54ADCC231685F700D8984E /* TemperatureButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C54ADCB231685F700D8984E /* TemperatureButton.swift */; };
 		3C54ADCF2316B1D800D8984E /* FavoritesPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C54ADCE2316B1D800D8984E /* FavoritesPage.storyboard */; };
 		3C54ADD12316B33100D8984E /* FavoritesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C54ADD02316B33100D8984E /* FavoritesVC.swift */; };
+		3C54ADD62316BE2E00D8984E /* FavoritesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C54ADD52316BE2E00D8984E /* FavoritesViewCell.swift */; };
+		3C54ADDA2316CCD300D8984E /* FavoritesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C54ADD92316CCD300D8984E /* FavoritesDataSource.swift */; };
+		3C54ADDC2316D3E500D8984E /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C54ADDB2316D3E500D8984E /* Favorite.swift */; };
+		3C54ADDE2317C14600D8984E /* FavoritesViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C54ADDD2317C14600D8984E /* FavoritesViewCell.xib */; };
 		896A23C488F5148532F25C42 /* Pods_WhatsTheWeather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BE40445580659FE5AF443AF /* Pods_WhatsTheWeather.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +63,10 @@
 		3C54ADCB231685F700D8984E /* TemperatureButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureButton.swift; sourceTree = "<group>"; };
 		3C54ADCE2316B1D800D8984E /* FavoritesPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FavoritesPage.storyboard; sourceTree = "<group>"; };
 		3C54ADD02316B33100D8984E /* FavoritesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesVC.swift; sourceTree = "<group>"; };
+		3C54ADD52316BE2E00D8984E /* FavoritesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewCell.swift; sourceTree = "<group>"; };
+		3C54ADD92316CCD300D8984E /* FavoritesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesDataSource.swift; sourceTree = "<group>"; };
+		3C54ADDB2316D3E500D8984E /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
+		3C54ADDD2317C14600D8984E /* FavoritesViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavoritesViewCell.xib; sourceTree = "<group>"; };
 		4BE40445580659FE5AF443AF /* Pods_WhatsTheWeather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhatsTheWeather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E4535DBAF2B93987F9BB77F /* Pods-WhatsTheWeather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatsTheWeather.debug.xcconfig"; path = "Target Support Files/Pods-WhatsTheWeather/Pods-WhatsTheWeather.debug.xcconfig"; sourceTree = "<group>"; };
 		B06BD4CC8B78CE9F6F16A3B4 /* Pods-WhatsTheWeather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatsTheWeather.release.xcconfig"; path = "Target Support Files/Pods-WhatsTheWeather/Pods-WhatsTheWeather.release.xcconfig"; sourceTree = "<group>"; };
@@ -119,6 +127,8 @@
 				3C54ADAB2313E59F00D8984E /* Weather.swift */,
 				3C54ADB123140E4600D8984E /* Networkable.swift */,
 				3C54ADC5231582A800D8984E /* Location.swift */,
+				3C54ADD92316CCD300D8984E /* FavoritesDataSource.swift */,
+				3C54ADDB2316D3E500D8984E /* Favorite.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -154,6 +164,7 @@
 		3C54AD9E2313D3F200D8984E /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				3C54ADD22316BDF900D8984E /* FavoritesViewCell */,
 				3C54ADB8231431A700D8984E /* MainButton.swift */,
 				3C54ADBA231521AB00D8984E /* GradientUtils.swift */,
 				3C54ADBC2315633E00D8984E /* WTWNavController.swift */,
@@ -195,6 +206,15 @@
 				3C54ADCE2316B1D800D8984E /* FavoritesPage.storyboard */,
 			);
 			path = FavoritesPage;
+			sourceTree = "<group>";
+		};
+		3C54ADD22316BDF900D8984E /* FavoritesViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				3C54ADDD2317C14600D8984E /* FavoritesViewCell.xib */,
+				3C54ADD52316BE2E00D8984E /* FavoritesViewCell.swift */,
+			);
+			path = FavoritesViewCell;
 			sourceTree = "<group>";
 		};
 		A3530735CC8352ECC5DF76C0 /* Pods */ = {
@@ -276,6 +296,7 @@
 			files = (
 				3C54AD8F2313C9A900D8984E /* LaunchScreen.storyboard in Resources */,
 				3C54AD9D2313D1D200D8984E /* SearchPage.storyboard in Resources */,
+				3C54ADDE2317C14600D8984E /* FavoritesViewCell.xib in Resources */,
 				3C54ADCF2316B1D800D8984E /* FavoritesPage.storyboard in Resources */,
 				3C54ADB523142E5500D8984E /* WeatherPage.storyboard in Resources */,
 				3C54AD8C2313C9A900D8984E /* Assets.xcassets in Resources */,
@@ -348,6 +369,9 @@
 				3C54ADD12316B33100D8984E /* FavoritesVC.swift in Sources */,
 				3C54ADC42315690400D8984E /* UserLocationService.swift in Sources */,
 				3C54ADA42313DC8D00D8984E /* OWMAppId.swift in Sources */,
+				3C54ADDA2316CCD300D8984E /* FavoritesDataSource.swift in Sources */,
+				3C54ADDC2316D3E500D8984E /* Favorite.swift in Sources */,
+				3C54ADD62316BE2E00D8984E /* FavoritesViewCell.swift in Sources */,
 				3C54ADAC2313E59F00D8984E /* Weather.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
