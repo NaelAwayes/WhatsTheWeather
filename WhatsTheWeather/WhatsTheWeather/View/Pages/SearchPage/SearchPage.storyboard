@@ -31,7 +31,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wHf-Mk-AUF" customClass="MainButton" customModule="WhatsTheWeather" customModuleProvider="target">
                                 <rect key="frame" x="57" y="366.5" width="300" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="8nt-9t-arI"/>
+                                    <constraint firstAttribute="width" constant="300" id="0eD-cz-woU"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <connections>
@@ -42,9 +42,8 @@
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="wHf-Mk-AUF" firstAttribute="leading" secondItem="q6o-da-R4E" secondAttribute="leading" constant="57" id="9b1-hv-qvB"/>
+                            <constraint firstItem="wHf-Mk-AUF" firstAttribute="centerX" secondItem="XdL-j3-wV5" secondAttribute="centerX" id="06I-dQ-oBV"/>
                             <constraint firstItem="4VT-2R-xXD" firstAttribute="top" secondItem="q6o-da-R4E" secondAttribute="top" constant="200" id="ILe-jV-N7H"/>
-                            <constraint firstItem="q6o-da-R4E" firstAttribute="trailing" secondItem="wHf-Mk-AUF" secondAttribute="trailing" constant="57" id="VaG-FH-Yee"/>
                             <constraint firstItem="wHf-Mk-AUF" firstAttribute="top" secondItem="eQ5-BI-qhc" secondAttribute="bottom" constant="20" id="cOP-WY-nVw"/>
                             <constraint firstItem="eQ5-BI-qhc" firstAttribute="top" secondItem="4VT-2R-xXD" secondAttribute="bottom" constant="20" id="dJc-Kg-j2O"/>
                             <constraint firstItem="4VT-2R-xXD" firstAttribute="leading" secondItem="q6o-da-R4E" secondAttribute="leading" constant="16" id="ldn-14-c4b"/>

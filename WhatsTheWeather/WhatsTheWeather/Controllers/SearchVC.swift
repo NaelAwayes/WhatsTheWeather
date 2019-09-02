@@ -16,9 +16,11 @@ class SearchVC: UIViewController {
     let locationManager = CLLocationManager() //TODO: Dependency injection would be better
     var userLocation: Location? {
         didSet {
+            locationManager.stopUpdatingLocation()
             client.getForecast(location: self.userLocation!, units: .metric) { (forecast, error) in
                 if let forecast = forecast {
                     self.navigateToWeatherScreen(weather: forecast.weather, weather5Day: forecast.weather5days)
+                    return
                 }
             }
 //            client.getWeather(location: self.userLocation!, units: .metric) { (weather, error) in
@@ -27,7 +29,6 @@ class SearchVC: UIViewController {
 //                }
 //                self.navigateToWeatherScreen(weather: weather)
 //            }
-            locationManager.stopUpdatingLocation()
         }
     }
 
