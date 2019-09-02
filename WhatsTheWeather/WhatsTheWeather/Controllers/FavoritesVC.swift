@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TinyConstraints
 
 class FavoritesVC: UIViewController {
 
@@ -26,12 +27,14 @@ class FavoritesVC: UIViewController {
 
         let favoritesCellNib = UINib(nibName: "FavoritesViewCell", bundle: nil)
         tableView.register(favoritesCellNib, forCellReuseIdentifier: "FavoritesViewCell")
+        checkIfTableViewEmpty()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         favoritesDataSource.cityArray = FavoritesVC.getFavorites()
         tableView.reloadData()
+        checkIfTableViewEmpty()
     }
 
     static func getFavorites() -> [String] {
@@ -50,7 +53,7 @@ extension FavoritesVC: UITableViewDelegate {
         var errorTitle: String?
         var errorDesc: String?
         if favorites.indices.contains(indexPath.row) {
-            client.getWeather(searchString: favorites[indexPath.row], units: .metric) { (weather, error) in
+            client.getForecast(searchString: favorites[indexPath.row], units: .metric) { (forecast, error) in
                 if let error = error {
                     switch error {
                     case .parsingError(_):
@@ -64,7 +67,8 @@ extension FavoritesVC: UITableViewDelegate {
                     alert.addAction(.init(title: "OK", style: .cancel, handler: nil))
                     self.present(alert, animated: true)
                 }
-                self.navigateToWeatherScreen(weather: weather)
+                dump(forecast?.weather5days)
+                self.navigateToWeatherScreen(weather: forecast?.weather, weather5Day: forecast?.weather5days)
             }
         } else {
             errorTitle = "A Technical Error Occured"
@@ -77,9 +81,22 @@ extension FavoritesVC: UITableViewDelegate {
 }
 
 private extension FavoritesVC {
-    func navigateToWeatherScreen(weather: Weather?) {
+    func navigateToWeatherScreen(weather: Weather?, weather5Day: Weather5Day? = nil) {
         let weatherVC = WeatherVC.instantiate(fromAppStoryboard: .WeatherPage)
         weatherVC.currentWeather = weather
+        weatherVC.weather5Day = weather5Day
         self.show(weatherVC, sender: nil)
+    }
+
+    func checkIfTableViewEmpty() {
+        if tableView.visibleCells.isEmpty {
+            let label = UILabel()
+            label.text = "You don't have any city saved."
+            label.textColor = UIColor.white
+            label.textAlignment = .center
+            tableView.backgroundView = label
+        } else {
+            tableView.backgroundView = nil
+        }
     }
 }

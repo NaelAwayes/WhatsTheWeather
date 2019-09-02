@@ -11,6 +11,8 @@ import UIKit
 final class WeatherVC: UIViewController {
 
     var currentWeather: Weather?
+    var weather5Day: Weather5Day?
+    var forecastDataSource = ForecastDataSource(forecast: [])
 
     @IBOutlet private weak var currentTempButton: TemperatureButton!
 
@@ -22,6 +24,8 @@ final class WeatherVC: UIViewController {
     @IBOutlet private weak var pressureLabel: UILabel!
     @IBOutlet private weak var humidityLabel: UILabel!
 
+    @IBOutlet private weak var forecastCollectionView: UICollectionView!
+
     var favoriteStatus: Bool = false {
         didSet {
             if favoriteStatus {
@@ -29,17 +33,38 @@ final class WeatherVC: UIViewController {
             } else {
                 self.navigationItem.rightBarButtonItem = createAddCityBarButton()
             }
-            print(UserDefaults.standard.stringArray(forKey: "savedCityArray"))
+//            print(UserDefaults.standard.stringArray(forKey: "savedCityArray"))
         }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        let forecastCellNib = UINib(nibName: "ForecastViewCell", bundle: nil)
+        forecastCollectionView.register(forecastCellNib, forCellWithReuseIdentifier: "ForecastViewCell")
+
+        forecastCollectionView.delegate = self
+        var forecast = [List]()
+        if let list = weather5Day?.list {
+            for i in 0...4 {
+                if list.indices.contains(i) {
+                    forecast.append(list[i])
+                }
+            }
+        }
+        forecastDataSource.forecast = forecast
+        forecastCollectionView.dataSource = forecastDataSource
+        forecastCollectionView.contentInset.left = 20
         self.navigationController?.navigationBar.tintColor = UIColor.white
         navigationItem.title = "Weather"
+        
         favoriteStatus = checkIfCityInSavedList()
         setupWeatherInfo()
     }
+}
+
+extension WeatherVC: UICollectionViewDelegate {
+
 }
 
 private extension WeatherVC {
@@ -52,6 +77,7 @@ private extension WeatherVC {
         if let cityName = currentWeather?.name, let countryName = currentWeather?.sys?.country {
             navigationItem.title = "\(cityName), \(countryName)"
         }
+        dump(weather5Day)
     }
 
     @objc func addCityToFavorites() {

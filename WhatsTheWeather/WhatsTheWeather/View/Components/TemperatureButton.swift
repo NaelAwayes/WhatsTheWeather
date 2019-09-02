@@ -69,7 +69,7 @@ final class TemperatureButton: UIButton {
 private extension TemperatureButton {
     func commonSetup() {
         tintColor = UIColor.white
-        titleLabel?.font = UIFont.systemFont(ofSize: 17.0)
+        titleLabel?.font = UIFont.boldSystemFont(ofSize: 17.0)
     }
 
     func convertCelsiusToFahrenheit(celsius: Double) -> Double {

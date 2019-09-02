@@ -11,12 +11,15 @@ import Moya
 enum OWMService {
     case currentForecast(searchString: String, appId: String, units: String?)
     case currentForecastLocation(latitude: String, longitude: String, appId: String, units: String?)
+    case fiveDayForecast(searchString: String, appId: String, units: String?)
+    case fiveDayForecastLocation(latitude: String, longitude: String, appId: String, units: String?)
+
 }
 
 extension OWMService: TargetType {
     var baseURL: URL {
         switch self {
-        case .currentForecast, .currentForecastLocation:
+        case .currentForecast, .currentForecastLocation, .fiveDayForecast, .fiveDayForecastLocation:
             return URL(string: "https://api.openweathermap.org/data/2.5/")!
         }
     }
@@ -25,12 +28,14 @@ extension OWMService: TargetType {
         switch self {
         case .currentForecast, .currentForecastLocation:
             return "/weather"
+        case .fiveDayForecast, .fiveDayForecastLocation:
+            return "forecast"
         }
     }
 
     var method: Method {
         switch self {
-        case .currentForecast, .currentForecastLocation:
+        case .currentForecast, .currentForecastLocation, .fiveDayForecast, .fiveDayForecastLocation:
             return .get
         }
     }
@@ -41,13 +46,13 @@ extension OWMService: TargetType {
 
     var task: Task {
         switch self {
-        case let .currentForecast(searchString, appId, units):
+        case let .currentForecast(searchString, appId, units), let .fiveDayForecast(searchString, appId, units):
             if let units = units {
                 return .requestParameters(parameters: ["q": searchString, "appid": appId, "units": units], encoding: URLEncoding.queryString)
             } else {
                 return .requestParameters(parameters: ["q": searchString, "appid": appId], encoding: URLEncoding.queryString)
             }
-        case let .currentForecastLocation(latitude, longitude, appId, units):
+        case let .currentForecastLocation(latitude, longitude, appId, units), let .fiveDayForecastLocation(latitude, longitude, appId, units):
             if let units = units {
                 return .requestParameters(parameters: ["lat": latitude, "lon": longitude, "appid": appId, "units": units], encoding: URLEncoding.queryString)
             } else {

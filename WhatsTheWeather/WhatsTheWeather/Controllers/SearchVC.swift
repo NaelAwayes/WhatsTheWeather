@@ -16,12 +16,17 @@ class SearchVC: UIViewController {
     let locationManager = CLLocationManager() //TODO: Dependency injection would be better
     var userLocation: Location? {
         didSet {
-            client.getWeather(location: self.userLocation!, units: .metric) { (weather, error) in
-                if let error = error {
-                    print("Location error fetch \(error)")
+            client.getForecast(location: self.userLocation!, units: .metric) { (forecast, error) in
+                if let forecast = forecast {
+                    self.navigateToWeatherScreen(weather: forecast.weather, weather5Day: forecast.weather5days)
                 }
-                self.navigateToWeatherScreen(weather: weather)
             }
+//            client.getWeather(location: self.userLocation!, units: .metric) { (weather, error) in
+//                if let error = error {
+//                    print("Location error fetch \(error)")
+//                }
+//                self.navigateToWeatherScreen(weather: weather)
+//            }
             locationManager.stopUpdatingLocation()
         }
     }
@@ -119,7 +124,7 @@ extension SearchVC: UISearchBarDelegate {
         var errorDesc: String?
         guard let text = searchBar.text, text != "" else { return }
         searchString = text
-        client.getWeather(searchString: searchString, units: .metric) { (weather, error) in
+        client.getForecast(searchString: searchString, units: .metric) { (forecast, error) in
             if let error = error {
                 switch error {
                 case .parsingError(_):
@@ -133,15 +138,16 @@ extension SearchVC: UISearchBarDelegate {
                 alert.addAction(.init(title: "OK", style: .cancel, handler: nil))
                 self.present(alert, animated: true)
             }
-            self.navigateToWeatherScreen(weather: weather)
+            self.navigateToWeatherScreen(weather: forecast?.weather, weather5Day: forecast?.weather5days)
         }
     }
 }
 
 private extension SearchVC {
-    func navigateToWeatherScreen(weather: Weather?) {
+    func navigateToWeatherScreen(weather: Weather?, weather5Day: Weather5Day? = nil) {
         let weatherVC = WeatherVC.instantiate(fromAppStoryboard: .WeatherPage)
         weatherVC.currentWeather = weather
+        weatherVC.weather5Day = weather5Day
         self.show(weatherVC, sender: nil)
     }
 }

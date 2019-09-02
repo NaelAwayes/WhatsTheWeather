@@ -19,25 +19,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="Wre-Cx-AXi">
-                                <rect key="frame" x="20" y="94" width="374" height="306"/>
+                                <rect key="frame" x="0.0" y="94" width="414" height="518"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="qFU-oD-5b6" userLabel="Temp StackView">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="72"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="72"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temperature" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MYf-OZ-VcY">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="36"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="36"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wBR-41-nds" customClass="TemperatureButton" customModule="WhatsTheWeather" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="36" width="374" height="36"/>
+                                                <rect key="frame" x="0.0" y="36" width="414" height="36"/>
                                                 <state key="normal" title="temperature"/>
                                             </button>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="gkH-Et-ZOm" userLabel="Wind StackView">
-                                        <rect key="frame" x="0.0" y="112" width="374" height="77"/>
+                                        <rect key="frame" x="0.0" y="112" width="414" height="77"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wind" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4gT-MG-qVT">
                                                 <rect key="frame" x="0.0" y="0.0" width="73" height="36"/>
@@ -82,7 +82,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="EFW-0j-mbL" userLabel="Wind StackView">
-                                        <rect key="frame" x="0.0" y="229" width="374" height="77"/>
+                                        <rect key="frame" x="0.0" y="229" width="414" height="77"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Atmosphere" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="die-nR-uUc">
                                                 <rect key="frame" x="0.0" y="0.0" width="172" height="36"/>
@@ -126,20 +126,54 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="IHA-aA-7f6" userLabel="ForecastStackView">
+                                        <rect key="frame" x="0.0" y="346" width="414" height="172"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daily Forecast" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rtx-tl-KN6">
+                                                <rect key="frame" x="0.0" y="0.0" width="198.5" height="36"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cu1-Ju-PNu" userLabel="ForecastCollectionView">
+                                                <rect key="frame" x="0.0" y="44" width="414" height="128"/>
+                                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="128" id="gvA-tE-1e7"/>
+                                                </constraints>
+                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Wom-Yn-PVe">
+                                                    <size key="itemSize" width="101" height="128"/>
+                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                </collectionViewFlowLayout>
+                                                <cells/>
+                                            </collectionView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="cu1-Ju-PNu" secondAttribute="trailing" id="e6A-8B-xf5"/>
+                                            <constraint firstItem="cu1-Ju-PNu" firstAttribute="leading" secondItem="IHA-aA-7f6" secondAttribute="leading" id="r1k-1K-hQT"/>
+                                        </constraints>
+                                    </stackView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="IHA-aA-7f6" firstAttribute="leading" secondItem="Wre-Cx-AXi" secondAttribute="leading" id="NbX-1N-WHJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="IHA-aA-7f6" secondAttribute="trailing" id="mT1-Kp-YgY"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="ibk-wG-KBu" firstAttribute="trailing" secondItem="Wre-Cx-AXi" secondAttribute="trailing" constant="20" id="4EI-Lt-6z1"/>
+                            <constraint firstItem="ibk-wG-KBu" firstAttribute="trailing" secondItem="Wre-Cx-AXi" secondAttribute="trailing" id="4EI-Lt-6z1"/>
                             <constraint firstItem="Wre-Cx-AXi" firstAttribute="top" secondItem="ibk-wG-KBu" secondAttribute="top" constant="50" id="Shf-Ne-QhA"/>
-                            <constraint firstItem="Wre-Cx-AXi" firstAttribute="leading" secondItem="ibk-wG-KBu" secondAttribute="leading" constant="20" id="g1B-9f-N1p"/>
+                            <constraint firstItem="Wre-Cx-AXi" firstAttribute="leading" secondItem="ibk-wG-KBu" secondAttribute="leading" id="g1B-9f-N1p"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ibk-wG-KBu"/>
                     </view>
                     <connections>
                         <outlet property="currentTempButton" destination="wBR-41-nds" id="wOB-mi-kog"/>
+                        <outlet property="forecastCollectionView" destination="cu1-Ju-PNu" id="BH1-M9-xBR"/>
                         <outlet property="humidityLabel" destination="wbd-Wr-013" id="40Z-Hf-uWt"/>
                         <outlet property="pressureLabel" destination="G83-gn-DaO" id="YFR-yG-uuP"/>
                         <outlet property="windDirLabel" destination="yXA-jn-Uba" id="VcB-B7-2oE"/>
