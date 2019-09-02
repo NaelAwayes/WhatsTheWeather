@@ -16,12 +16,6 @@ class SearchVC: UIViewController {
     let locationManager = CLLocationManager() //TODO: Dependency injection would be better
     var userLocation: Location? {
         didSet {
-            locationManager.stopUpdatingLocation()
-            client.getForecast(location: self.userLocation!, units: .metric) { (forecast, error) in
-                if let forecast = forecast {
-                    self.navigateToWeatherScreen(weather: forecast.weather, weather5Day: forecast.weather5days)
-                    return
-                }
             }
 //            client.getWeather(location: self.userLocation!, units: .metric) { (weather, error) in
 //                if let error = error {
@@ -29,7 +23,6 @@ class SearchVC: UIViewController {
 //                }
 //                self.navigateToWeatherScreen(weather: weather)
 //            }
-        }
     }
 
     let client = OWMClient()
@@ -76,7 +69,12 @@ extension SearchVC: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let currentLocation = locations.last {
             userLocation = Location(longitude: String(format: "%f", currentLocation.coordinate.longitude), latitude: String(format: "%f", currentLocation.coordinate.latitude))
-            locationManager.stopUpdatingLocation()
+            client.getForecast(location: self.userLocation!, units: .metric) { (forecast, error) in
+                if let forecast = forecast {
+                    self.navigateToWeatherScreen(weather: forecast.weather, weather5Day: forecast.weather5days)
+                    return
+                }
+            }
         }
     }
 
@@ -107,7 +105,7 @@ extension SearchVC: CLLocationManagerDelegate {
             present(alert, animated: true, completion: nil)
             return
         }
-        locationManager.startUpdatingLocation()
+        locationManager.requestLocation()
     }
 }
 
