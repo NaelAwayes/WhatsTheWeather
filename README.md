@@ -1,5 +1,7 @@
 # WhatsTheWeather
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/ff0da768c5186458a115/maintainability)](https://codeclimate.com/github/NaelAwayes/WhatsTheWeather/maintainability)
+
 ## An app that fetches weather on the OpenWeatherMap API
 
 ###### DISCLAIMER: I know I did not use branches and commited all on master, that's not happening again 😅
