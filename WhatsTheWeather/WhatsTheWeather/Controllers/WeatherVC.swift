@@ -82,18 +82,12 @@ private extension WeatherVC {
 
     @objc func addCityToFavorites() {
         guard let cityName = currentWeather?.name else {
-            let alert = UIAlertController(title: "An Error Occurred", message: "Please get in touch with support so can we make sure this does not happen again", preferredStyle: .alert)
-            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-            alert.addAction(action)
-            self.present(alert, animated: true, completion: nil)
+           displayAlert(title: "An Error Occurred", message: "Please get in touch with support so can we make sure this does not happen again", alertActionTitle: "OK")
             return
         }
         if var cityArray = UserDefaults.standard.stringArray(forKey: "savedCityArray") {
             if (cityArray.contains(cityName)) {
-                let alert = UIAlertController(title: "City already in Favorites", message: "The current city already exists in your list of saved cities", preferredStyle: .alert)
-                let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-                alert.addAction(action)
-                self.present(alert, animated: true, completion: nil)
+                displayAlert(title: "City already in Favorites", message:"The current city already exists in your list of saved cities", alertActionTitle: "OK")
                 return
             }
             cityArray.append(cityName)
@@ -105,13 +99,17 @@ private extension WeatherVC {
             favoriteStatus = true
         }
     }
+    
+    func displayAlert(title: String?, message: String?, alertActionTitle: String?, handler: ((UIAlertAction) -> Void)? = nil) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: alertActionTitle, style: .default, handler: handler)
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
+    }
 
     @objc func removeCityFromFavorites() {
         guard let cityName = currentWeather?.name else {
-            let alert = UIAlertController(title: "An Error Occurred", message: "Please get in touch with support so can we make sure this does not happen again", preferredStyle: .alert)
-            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-            alert.addAction(action)
-            self.present(alert, animated: true, completion: nil)
+            displayAlert(title: "An Error Occurred", message: "Please get in touch with support so can we make sure this does not happen again", alertActionTitle: "OK")
             return
         }
         if var cityArray = UserDefaults.standard.stringArray(forKey: "savedCityArray") {
@@ -124,10 +122,7 @@ private extension WeatherVC {
                 return
             }
         }
-        let alert = UIAlertController(title: "City not in Favorites", message: "The current city does not exist in your list of saved cities", preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(action)
-        self.present(alert, animated: true, completion: nil)
+         displayAlert(title: "City not in Favorites", message:"The current city does not exist in your list of saved cities", alertActionTitle: "OK")
         return
     }
 
