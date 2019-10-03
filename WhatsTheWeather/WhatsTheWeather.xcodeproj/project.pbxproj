@@ -23,8 +23,6 @@
 		3C54ADB9231431A700D8984E /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C54ADB8231431A700D8984E /* MainButton.swift */; };
 		3C54ADBB231521AB00D8984E /* GradientUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C54ADBA231521AB00D8984E /* GradientUtils.swift */; };
 		3C54ADBD2315633E00D8984E /* WTWNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C54ADBC2315633E00D8984E /* WTWNavController.swift */; };
-		3C54ADC02315677A00D8984E /* LocationProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C54ADBF2315677A00D8984E /* LocationProtocols.swift */; };
-		3C54ADC42315690400D8984E /* UserLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C54ADC32315690400D8984E /* UserLocationService.swift */; };
 		3C54ADC6231582A800D8984E /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C54ADC5231582A800D8984E /* Location.swift */; };
 		3C54ADCA2316780700D8984E /* WeatherVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C54ADC92316780700D8984E /* WeatherVC.swift */; };
 		3C54ADCC231685F700D8984E /* TemperatureButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C54ADCB231685F700D8984E /* TemperatureButton.swift */; };
@@ -61,8 +59,6 @@
 		3C54ADB8231431A700D8984E /* MainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
 		3C54ADBA231521AB00D8984E /* GradientUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientUtils.swift; sourceTree = "<group>"; };
 		3C54ADBC2315633E00D8984E /* WTWNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WTWNavController.swift; sourceTree = "<group>"; };
-		3C54ADBF2315677A00D8984E /* LocationProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProtocols.swift; sourceTree = "<group>"; };
-		3C54ADC32315690400D8984E /* UserLocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationService.swift; sourceTree = "<group>"; };
 		3C54ADC5231582A800D8984E /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		3C54ADC92316780700D8984E /* WeatherVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherVC.swift; sourceTree = "<group>"; };
 		3C54ADCB231685F700D8984E /* TemperatureButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureButton.swift; sourceTree = "<group>"; };
@@ -115,7 +111,6 @@
 		3C54AD832313C9A800D8984E /* WhatsTheWeather */ = {
 			isa = PBXGroup;
 			children = (
-				3C54ADBE2315676800D8984E /* LocationService */,
 				3C54AD9A2313CD0D00D8984E /* Controllers */,
 				3C54AD992313CD0800D8984E /* View */,
 				3C54AD972313C9EF00D8984E /* Model */,
@@ -193,15 +188,6 @@
 				3C54ADB423142E5500D8984E /* WeatherPage.storyboard */,
 			);
 			path = WeatherPage;
-			sourceTree = "<group>";
-		};
-		3C54ADBE2315676800D8984E /* LocationService */ = {
-			isa = PBXGroup;
-			children = (
-				3C54ADBF2315677A00D8984E /* LocationProtocols.swift */,
-				3C54ADC32315690400D8984E /* UserLocationService.swift */,
-			);
-			path = LocationService;
 			sourceTree = "<group>";
 		};
 		3C54ADC82316774A00D8984E /* Pages */ = {
@@ -385,7 +371,6 @@
 				3C54ADBB231521AB00D8984E /* GradientUtils.swift in Sources */,
 				3CEF6817231D4A82009D2DC3 /* ForecastDataSource.swift in Sources */,
 				3C54ADBD2315633E00D8984E /* WTWNavController.swift in Sources */,
-				3C54ADC02315677A00D8984E /* LocationProtocols.swift in Sources */,
 				3C54ADA22313D48800D8984E /* OWMService.swift in Sources */,
 				3C54ADC6231582A800D8984E /* Location.swift in Sources */,
 				3C54ADCC231685F700D8984E /* TemperatureButton.swift in Sources */,
@@ -395,7 +380,6 @@
 				3C54ADA82313DE1700D8984E /* OWMWeatherUnits.swift in Sources */,
 				3C54ADAE231401C700D8984E /* AppStoryboard.swift in Sources */,
 				3C54ADD12316B33100D8984E /* FavoritesVC.swift in Sources */,
-				3C54ADC42315690400D8984E /* UserLocationService.swift in Sources */,
 				3C54ADA42313DC8D00D8984E /* OWMAppId.swift in Sources */,
 				3C54ADDA2316CCD300D8984E /* FavoritesDataSource.swift in Sources */,
 				3C54ADDC2316D3E500D8984E /* Favorite.swift in Sources */,
@@ -540,13 +524,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QK83D8F34A;
+				DEVELOPMENT_TEAM = T6Z6GP46N5;
 				INFOPLIST_FILE = WhatsTheWeather/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.naelawayes.WhatsTheWeather;
+				PRODUCT_BUNDLE_IDENTIFIER = com.naelawayesappledev.WhatsTheWeather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -559,13 +543,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QK83D8F34A;
+				DEVELOPMENT_TEAM = T6Z6GP46N5;
 				INFOPLIST_FILE = WhatsTheWeather/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.naelawayes.WhatsTheWeather;
+				PRODUCT_BUNDLE_IDENTIFIER = com.naelawayesappledev.WhatsTheWeather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

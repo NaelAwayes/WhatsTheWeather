@@ -37,7 +37,6 @@ class OWMClient: Networkable {
                         completion(nil, WeatherFetchError.notFoundError(nil))
                         return
                     }
-                    let str = String(data: response.data, encoding: String.Encoding.utf8) as String?
                     completion(nil, WeatherFetchError.parsingError(nil))
                     return
                 case .failure(let error):
@@ -130,7 +129,6 @@ class OWMClient: Networkable {
                     let decoder = JSONDecoder()
                     do {
                         let weather = try decoder.decode(Weather5Day.self, from: response.data)
-                         let str = String(data: response.data, encoding: String.Encoding.utf8) as String?
                         completion(weather, nil)
                     } catch let error {
                         completion(nil, WeatherFetchError.parsingError(error))
@@ -177,7 +175,6 @@ class OWMClient: Networkable {
                             completion(weather, nil)
                             return
                         } catch let error {
-                            dump(error)
                             completion(nil, WeatherFetchError.parsingError(error))
                             return
                         }
@@ -186,7 +183,6 @@ class OWMClient: Networkable {
                         completion(nil, WeatherFetchError.notFoundError(nil))
                         return
                     }
-                    let str = String(data: response.data, encoding: String.Encoding.utf8) as String?
                     completion(nil, WeatherFetchError.parsingError(nil))
                     return
                 case .failure(let error):
@@ -256,5 +252,4 @@ class OWMClient: Networkable {
             }
         }
     }
-
 }
