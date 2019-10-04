@@ -1,5 +1,10 @@
 import UIKit
 
+enum GradientConstants {
+    static let WTWFirstColor =  UIColor(red:1.00, green:0.60, blue:0.40, alpha:1.0)
+    static let WTWSecondColor = UIColor(red:1.00, green:0.37, blue:0.38, alpha:1.0)
+}
+
 extension UIView {
     func setGradientBackground(firstColor: UIColor, secondColor: UIColor) {
         let gradientLayer = CAGradientLayer()

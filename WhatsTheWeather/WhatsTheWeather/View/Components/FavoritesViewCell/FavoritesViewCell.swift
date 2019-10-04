@@ -30,7 +30,7 @@ final class FavoritesViewCell: UITableViewCell {
         containerView.backgroundColor = UIColor.clear
 
         clippingView.layer.cornerRadius = 15
-        clippingView.setGradientBackground(firstColor: UIColor(red:1.00, green:0.60, blue:0.40, alpha:1.0), secondColor: UIColor(red:1.00, green:0.37, blue:0.38, alpha:1.0))
+        clippingView.setGradientBackground(firstColor: GradientConstants.WTWFirstColor, secondColor: GradientConstants.WTWSecondColor)
         clippingView.clipsToBounds = true
 
         cityNameLabel.textColor = UIColor.white
