@@ -18,3 +18,6 @@
  - Moya (https://github.com/Moya/Moya)
  - FontAwesome.swift (https://github.com/thii/FontAwesome.swift)
  - TinyConstraints (https://github.com/roberthein/TinyConstraints)
+
+### TODO:
+ - Refactoring on the Network Client
